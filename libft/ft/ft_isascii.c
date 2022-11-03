@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 14:26:43 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/03 15:08:31 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/03 15:09:03 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/03 15:16:10 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+int	ft_isascii(int c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	if (c >= 0 && c <= 127)
 		return (1);
 	else
 		return (0);
 }
-
 /*#include <ctype.h>
 #include <stdio.h>
 int   main(void)
 {
-	char c = '%';
-	printf("%i\n", isalnum(c));
-	printf("%i", ft_isalnum(c));
+	char c = 'x';
+	printf("%i\n", isascii(c));
+	printf("%i", ft_isascii(c));
 	return 0;		
 }*/

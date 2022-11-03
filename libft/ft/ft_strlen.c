@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 14:26:43 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/03 15:08:31 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/03 15:22:05 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/03 15:46:46 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+size_t	ft_strlen(const char *str)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	int	i;
+	i = 0;
+	while(str[i] != '\0')
+		i++;
+	return (i);
 }
 
-/*#include <ctype.h>
+/*#include <string.h>
 #include <stdio.h>
 int   main(void)
 {
-	char c = '%';
-	printf("%i\n", isalnum(c));
-	printf("%i", ft_isalnum(c));
+	const char str[] = "TESTE123";
+	printf("%lus\n", strlen(*str));
+	printf("%i", ft_strlen(*str));
 	return 0;		
 }*/
