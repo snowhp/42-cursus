@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 14:19:18 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/03 20:19:01 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/03 18:14:28 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/03 20:04:43 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+void	*ft_memset(void *str, int c, size_t n)
 {
-	if (c >= '0' && c <= '9')
+	size_t	i;
+	char *s;
+	s = str;
+	i = 0;
+	while(i < n)
 	{
-		return (1);
+		s[i] = (char)c;
+		i++;
 	}
-	else
-		return (0);
+	return(s);
 }
 
-/*#include <ctype.h>
-#include <stdio.h>
-int main(void)
+/*int	main()
 {
-	char c = 'a';
-	printf("%i\n", isdigit(c));
-	printf("%i", ft_isdigit(c));
-	return 0;		
+	void str[] = "TESTE";
+	printf("%s", memset(str, '$', 2));
+	printf("%s", ft_memset(str, '$', 2));
 }*/
