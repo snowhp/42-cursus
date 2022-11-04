@@ -6,9 +6,11 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:58:58 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/03 21:10:40 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:38:08 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

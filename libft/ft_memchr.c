@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 20:48:22 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:37:43 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 19:46:14 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/04 20:37:56 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t		i;
-	char		*sdest;
-	const char	*ssrc;
+	const char	*big;
 
-	sdest = dest;
-	ssrc = src;
+	big = (const char *)s;
 	i = 0;
 	while (i < n)
 	{
-		sdest[i] = ssrc[i];
+		if (big[i] == c)
+			return ((void *)&big[i]);
 		i++;
 	}
-	dest = sdest;
-	return (dest);
+	return (NULL);
 }
 
-/*
-int	main()
+/* #include <string.h>
+int	main(void)
 {
-	char dest[] = "OLAaa";
-	char src[] = "FT_teste";
-	ft_memcpy(&dest, &src, 2);
-	printf("%s", dest);
+	const char str[] = "http://www.tutorialspointa.com";
+   	const char ch = 'a';
+	char *result = (char *) ft_memchr(str, ch, strlen(str));
+	printf("%s\n", result);
+	const char str1[] = "http://www.tutorialspointa.com";
+	result = (char *) memchr(str1, ch, strlen(str));
+	printf("%s\n", result);
 	return (0);
-}*/
+} */

@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 20:48:22 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:37:43 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 17:17:45 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/04 20:31:11 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t		i;
-	char		*sdest;
-	const char	*ssrc;
+	char	ch;
 
-	sdest = dest;
-	ssrc = src;
-	i = 0;
-	while (i < n)
+	ch = c;
+	while (*s != '\0')
 	{
-		sdest[i] = ssrc[i];
-		i++;
+		if (*s == ch)
+			return ((char *)s);
+		++s;
 	}
-	dest = sdest;
-	return (dest);
+	return (NULL);
 }
 
-/*
-int	main()
+/* #include <stdio.h>
+#include <string.h>
+int	main(void)
 {
-	char dest[] = "OLAaa";
-	char src[] = "FT_teste";
-	ft_memcpy(&dest, &src, 2);
-	printf("%s", dest);
+	const char s[] = "ss";
+	printf("%s\n", ft_strchr(s,'a'));
+	//const char d[] = "bcvcv";
+	//printf("%s\n", strchr(d,'a'));
 	return (0);
-}*/
+} */
