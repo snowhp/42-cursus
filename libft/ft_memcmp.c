@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:59:12 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:10:11 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/05 11:05:39 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-#include <string.h>
+/* #include <string.h>
 #include <stdio.h>
 int	main()
 {
@@ -36,4 +36,4 @@ int	main()
 	printf("%i\n", ft_memcmp(str1, str2, 3));
 	printf("%i\n", memcmp(str1, str2, 3));
 	return (0);
-}
+} */

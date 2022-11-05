@@ -6,28 +6,32 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:42:51 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:30:47 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/05 11:39:17 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h>
-#include <bsd/.h>
 #include "libft.h"
-#include <stddef.h> */
-#include "libft.h"
+
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < size)
+	if(size >= ft_strlen(src))
 	{
-		dest[i] = src[i];
+		while (i < size)
+		{
+			dest[i + ft_strlen(dest)] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	return (5);
+	return (ft_strlen(src));
 }
 
-/* int	main()
+/* #include <string.h>
+#include <stdio.h>
+int	main()
 {
 	char dest[] = "teste";
 	char src[] = "ola";

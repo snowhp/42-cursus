@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:04:30 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:33:22 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/04 22:11:11 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (save);
 }
+
 /* #include <string.h>
 #include <stdio.h>
 int	main()

@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:17:45 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:31:11 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/04 22:07:55 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,20 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	ch;
-
-	ch = c;
-	while (*s != '\0')
-	{
-		if (*s == ch)
-			return ((char *)s);
-		++s;
-	}
-	return (NULL);
+	while (*s != '\0' && c != *s)
+		s++;
+	if (c == *s)
+		return ((char *)s);
+	return (0);
 }
 
 /* #include <stdio.h>
 #include <string.h>
 int	main(void)
 {
-	const char s[] = "ss";
+	const char s[] = "";
 	printf("%s\n", ft_strchr(s,'a'));
-	//const char d[] = "bcvcv";
-	//printf("%s\n", strchr(d,'a'));
+	const char d[] = "";
+	printf("%s\n", strchr(d,'a'));
 	return (0);
 } */

@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:48:22 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:37:43 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/04 21:10:05 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	char		*sdest;
-	const char	*ssrc;
+	char *destaddr;
+  	const char *srcaddr;
 
-	sdest = dest;
-	ssrc = src;
-	i = 0;
-	while (i < n)
-	{
-		sdest[i] = ssrc[i];
-		i++;
-	}
-	dest = sdest;
-	return (dest);
+	if (!dest && !src)
+		return (0);
+  	destaddr = (char *)dest;
+	srcaddr = (char *)src;
+  	while (n-- > 0)
+		*destaddr++ = *srcaddr++;
+  	return dest;
 }
 
-/*
-int	main()
+/* int	main()
 {
 	char dest[] = "OLAaa";
-	char src[] = "FT_teste";
+	char src[] = "";
 	ft_memcpy(&dest, &src, 2);
-	printf("%s", dest);
+	printf("%s\n", dest);
+	char dest1[] = "OLAaa";
+	char src1[] = "";
+	ft_memcpy(&dest1, &src1, 2);
+	printf("%s\n", dest1);
 	return (0);
-}*/
+} */
