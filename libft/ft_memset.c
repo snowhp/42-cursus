@@ -27,7 +27,7 @@ void	*ft_memset(void *str, int c, size_t n)
 	return (s);
 }
 
-/*int	main()
+/*int	main(void)
 {
 	void str[] = "TESTE";
 	printf("%s", memset(str, '$', 2));

@@ -22,10 +22,10 @@ int	ft_isdigit(int c)
 
 /*#include <ctype.h>
 #include <stdio.h>
-int main(void)
+int	main(void)
 {
 	char c = 'a';
 	printf("%i\n", isdigit(c));
 	printf("%i", ft_isdigit(c));
-	return 0;		
+	return (0);		
 }*/

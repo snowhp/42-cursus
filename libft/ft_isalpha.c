@@ -26,5 +26,5 @@ int	main(void)
 	char c = '4';
 	printf("%i\n", isalpha(c));
 	printf("%i", ft_isalpha(c));
-	return 0;		
+	return (0);		
 }*/

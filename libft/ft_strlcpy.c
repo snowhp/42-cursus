@@ -17,7 +17,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	size_t	i;
 
 	i = 0;
-	if(size >= ft_strlen(src))
+	if (size >= ft_strlen(src))
 	{
 		while (i < size)
 		{
@@ -31,7 +31,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 /* #include <string.h>
 #include <stdio.h>
-int	main()
+int	main(void)
 {
 	char dest[] = "teste";
 	char src[] = "ola";

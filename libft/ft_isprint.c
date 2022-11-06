@@ -20,10 +20,10 @@ int	ft_isprint(int c)
 
 /* #include <ctype.h>
 #include <stdio.h>
-int   main(void)
+int	main(void)
 {
 	char c = '~';
 	printf("%i\n", isprint(c));
 	printf("%i\n", ft_isprint(c));
-	return 0;		
+	return (0);		
 } */

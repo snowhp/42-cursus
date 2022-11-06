@@ -1,50 +1,83 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/03 14:47:04 by tde-sous          #+#    #+#              #
-#    Updated: 2022/11/05 11:54:51 by tde-sous         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#  |  |  ___ \    \  |         |
+#  |  |     ) |  |\/ |   _  |  |  /   _ 
+# ___ __|  __/   |   |  (   |    <    __/ 
+#    _|  _____| _|  _| \__,_| _|\_\ \___|
+#                              by jcluzet
+################################################################################
+#                                     CONFIG                                   #
+################################################################################
 
+NAME        := a.out
+CC        := clang
+FLAGS    := -Wall -Wextra -Werror 
+################################################################################
+#                                 PROGRAM'S SRCS                               #
+################################################################################
 
-CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
-LIB1	= ar -rcs
-LIB2	= ranlib
-RM		= /bin/rm -f
-
-NAME	= libft.a
-
-INCLUDE	= libft.h
-SRCS	= ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
-			ft_tolower.c ft_toupper.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
-			ft_strchr.c ft_strncmp.c  ft_memset.c ft_bzero.c ft_memcpy.c\
-			ft_memchr.c ft_memcmp.c  ft_memmove.c ft_strrchr.c ft_strnstr.c \
-			ft_atoi.c \
-			
-OBJS	= $(SRCS:.c=.o)
-
-all:		$(NAME)
-
-$(NAME):	$(OBJS) $(INCLUDE)
-			$(LIB1) $(NAME) $(OBJS)
-			$(LIB2) $(NAME)
+SRCS        :=      ft_strchr.c \
+                          ft_isdigit.c \
+                          ft_strrchr.c \
+                          ft_isalpha.c \
+                          ft_strlen.c \
+                          main.c \
+                          ft_tolower.c \
+                          ft_atoi.c \
+                          ft_isalnum.c \
+                          ft_isprint.c \
+                          ft_strnstr.c \
+                          ft_strncmp.c \
+                          ft_memmove.c \
+                          ft_toupper.c \
+                          ft_bzero.c \
+                          ft_memchr.c \
+                          ft_strlcat.c \
+                          ft_memset.c \
+                          ft_strlcpy.c \
+                          ft_memcmp.c \
+                          ft_isascii.c \
+                          ft_memcpy.c \
+                          
+OBJS        := $(SRCS:.c=.o)
 
 .c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+
+################################################################################
+#                                  Makefile  objs                              #
+################################################################################
+
+
+CLR_RMV		:= \033[0m
+RED		    := \033[1;31m
+GREEN		:= \033[1;32m
+YELLOW		:= \033[1;33m
+BLUE		:= \033[1;34m
+CYAN 		:= \033[1;36m
+RM		    := rm -f
+
+${NAME}:	${OBJS}
+			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
+			${CC} ${FLAGS} -o ${NAME} ${OBJS}
+			@echo "$(GREEN)$(NAME) created[0m ✔️"
+
+all:		${NAME}
+
+bonus:		all
 
 clean:
-			$(RM) $(OBJS)
+			@ ${RM} *.o */*.o */*/*.o
+			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
 
 fclean:		clean
-			$(RM) $(NAME)
+			@ ${RM} ${NAME}
+			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
 
 re:			fclean all
 
 so:
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	$(CC) -nostartfiles -shared -o libft.so $(OBJS)
+	cc -nostartfiles -shared -o libft.so $(OBJS)
+
+.PHONY:		all clean fclean re
+
+

@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 20:26:05 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 20:37:28 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/05 16:40:15 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/05 19:24:34 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h";
 
-void	ft_bzero(void *s, size_t n)
+void *ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
-	char	*str;
+	size_t bytes;
 
-	str = s;
-	i = 0;
-	while (i < n && str[i] != '\0')
-	{
-		str[i] = '\0';
-		i++;
-	}
-	s = str;
+  	if (nmemb == 0 || size == 0)
+  	  return ft_calloc (1, 1);
+  	bytes = nmemb * s;
+  	if (bytes / size != nmemb)
+  	  return NULL;
+  	return ft_calloc (nmemb, size);
 }
-
-/* #include <stdio.h>
 
 int	main(void)
 {
-	char str[] = "teste";
-	ft_bzero(&str,3);
-	printf("%s", str);
-} */
+	ft_calloc();
+	calloc();
+	return (0);
+}

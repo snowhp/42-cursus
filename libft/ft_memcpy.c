@@ -14,19 +14,19 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char *destaddr;
-  	const char *srcaddr;
+	char		*destaddr;
+	const char	*srcaddr;
 
 	if (!dest && !src)
 		return (0);
-  	destaddr = (char *)dest;
+	destaddr = (char *)dest;
 	srcaddr = (char *)src;
-  	while (n-- > 0)
+	while (n-- > 0)
 		*destaddr++ = *srcaddr++;
-  	return dest;
+	return (dest);
 }
 
-/* int	main()
+/* int	main(void)
 {
 	char dest[] = "OLAaa";
 	char src[] = "";

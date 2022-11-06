@@ -17,6 +17,7 @@
 	size_t		i;
 	char		*ddest;
 	const char	*ssrc;
+	size_t		i;
 
 	i = 0;
 	ddest = dest;
@@ -31,8 +32,6 @@
 } */
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t i;
-
 	if (!dst && !src)
 		return (0);
 	i = 0;
@@ -57,7 +56,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 }
 /*
 #include <stdio.h>
-int	main()
+int	main(void)
 {
 	char dest[] = "teste";
 	char src[] = "olaaaa";

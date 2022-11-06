@@ -22,10 +22,10 @@ int	ft_isalnum(int c)
 
 /*#include <ctype.h>
 #include <stdio.h>
-int   main(void)
+int	main(void)
 {
 	char c = '%';
 	printf("%i\n", isalnum(c));
 	printf("%i", ft_isalnum(c));
-	return 0;		
+	return (0);		
 }*/
