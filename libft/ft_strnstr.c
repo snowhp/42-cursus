@@ -6,13 +6,13 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 11:05:59 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/05 16:11:59 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/07 20:04:46 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+/* char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	char	c;
 	char	sc;
@@ -34,16 +34,46 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		big--;
 	}
 	return ((char *)big);
+} */
+
+char	*ft_strnstr(const char *s, const char *find, size_t slen)
+{
+	char c, sc;
+	size_t len;
+	
+	if ((c = *find++) != '\0') {
+		len = ft_strlen(find);
+		if ((sc = *s++) == '\0' || slen-- < 1)
+					return (NULL);
+		if (len > slen)
+				return (NULL);		
+		while (ft_strncmp(s, find, len) != 0)
+		{
+			while (sc != c) 
+			{
+				if ((sc = *s++) == '\0' || slen-- < 1)
+					return (NULL);
+			}
+			if (len > slen)
+				return (NULL);
+		} 
+		s--;
+	}
+	return ((char *)s);
 }
 
-/* #include <stdio.h>
+#include <stdio.h>
+#include <bsd/string.h>
+
 int	main(void)
 {
-	const char	little[];
+	char *s1 = "MZIRIBMZIRIBMZE123";
+	char *s2 = "MZIRIBMZE";
+	size_t max = ft_strlen(s2);
+	char *i1 = strnstr(s1, s2, max);
+	char *i2 = ft_strnstr(s1, s2, max);
 
-	const char big [] = "teste";;
-	little[] = "st";
-	printf("OLA \n%s\n", ft_strnstr(big, little, 4));
+	if (i1 == i2)
+		printf("Sucess");
 	return (0);
 }
- */

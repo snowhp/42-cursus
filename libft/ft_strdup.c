@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 19:59:12 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 16:23:07 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/07 14:10:58 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/07 16:22:49 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char *ft_strdup(const char *s)
 {
-	register const unsigned char	*p1;
-	register const unsigned char	*p2;
-
-	if (n != 0)
-	{
-		p1 = s1;
-		p2 = s2;
-		while (n != 0)
-		{
-			if (*p1++ != *p2++)
-				return (*--p1 - *--p2);
-			n--;
-		}
-	}
-	return (0);
-}
+	char *src;
+	src = (char*) s;
+	char *dst;
+	dst = malloc(ft_strlen(s) * sizeof(char));
+	ft_strlcpy(dst, src, ft_strlen(s));
+	return (dst);
+} 
 
 /* #include <string.h>
 #include <stdio.h>
 int	main(void)
 {
-	char str1[] = "aa!";
-   	char str2[] = "a";
-	printf("%i\n", ft_memcmp(str1, str2, 3));
-	printf("%i\n", memcmp(str1, str2, 3));
+	char *teste;
+	char dup[] = "teste";
+	teste = ft_strdup(dup);
+	printf("%s\n", teste);
+	char *teste1;
+	char dup1[] = "teste1";
+	teste1 = strdup(dup1);
+	printf("%s\n", teste1);
 	return (0);
 } */

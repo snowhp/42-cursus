@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:58:58 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 21:59:17 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:44:38 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 	dest = ddest;
 	return (dest);
 } */
-void	*ft_memmove(void *dst, const void *src, size_t len)
+/* void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	if (!dst && !src)
 		return (0);
@@ -53,14 +53,62 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	return (dst);
+} */
+/* void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned int* from = (unsigned int*) src;
+	unsigned int* to = (unsigned int*) dst;
+
+	if (from == to || len == 0)
+		return dst;
+	if (to > from && to - from < (int)len) {
+		int i;
+		for(i = len - 1; i >= 0; i--)
+			to[i] = from[i];
+		return dst;
+	}
+	if (from > to && from - to < (int)len) {
+		size_t i;
+		for(i=0; i < len; i++)
+			to[i] = from[i];
+		return dst;
+	}
+	ft_memcpy(dst, src, len);
+	return dst;
+}*/
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	char *dest0 = dst;
+	char const *source0 = src;
+	if (source0 < dest0)
+	{	source0 += len;
+		dest0 += len;
+		while (len)
+		{
+			*--dest0 = *--source0;
+			--len;
+		}
+	}
+	else if (source0 != dest0)
+	{
+		while(len)
+		{
+			*dest0++ = *source0++;
+			--len;
+		}
+	}
+	return (dst);
 }
-/*
-#include <stdio.h>
+/* #include <stdio.h>
+#include <string.h>
 int	main(void)
 {
 	char dest[] = "teste";
 	char src[] = "olaaaa";
 	ft_memmove(&dest, &src, 4);
-	printf("%s", dest);
+	printf("%s\n", dest);
+	char dest1[] = "teste";
+	ft_memmove(&dest1, &src, 4);
+	printf("%s", dest1);
 	return (0);
-}*/
+} */
