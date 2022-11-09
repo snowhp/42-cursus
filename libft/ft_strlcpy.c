@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:42:51 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 18:13:10 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:11:03 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	const size_t srclen = ft_strlen(src);
+	const size_t	srclen = ft_strlen(src);
 
-	if (srclen + 1 < size) 
+	if (srclen + 1 < size)
 	{
 		ft_memcpy(dest, src, srclen + 1);
-	} 
-	else if (size != 0) {
-		ft_memcpy(dest, src, size - 1);
-		dest[size-1] = '\0';
 	}
-	return srclen;
+	else if (size != 0)
+	{
+		ft_memcpy(dest, src, size - 1);
+		dest[size - 1] = '\0';
+	}
+	return (srclen);
 }
 /* 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)

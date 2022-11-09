@@ -1,13 +1,53 @@
-#include "libft.h"
-#include <stdio.h>
-#include <bsd/string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 12:17:34 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/09 12:21:58 by tde-sous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* int	main(void)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	register char		*d;
+	register const char	*s;
+	register size_t		n;
+	size_t				dlen;
+
+	d = dst;
+	s = src;
+	n = size;
+	while (n-- != 0 && *d != '\0')
+		d++;
+	dlen = d - dst;
+	n = size - dlen;
+	if (n == 0)
+		return (dlen + ft_strlen(s));
+	while (*s != '\0')
+	{
+		if (n != 1)
+		{
+			*d++ = *s;
+			n--;
+		}
+		s++;
+	}
+	*d = '\0';
+	return (dlen + (s - src));
+}
+
+/* #include <stdio.h>
+#include <bsd/string.h>
+int	main(void)
 {
 	char *str = "the cake is a lie asdasd!\0I'm hidden lol\r\n";
 	char buff1[0xF00] = "there is no stars in the sky";
 	char buff2[0xF00] = "there is no stars in the sky";
-	size_t max = ft_strlen("the cake is a lie asdasd!\0I'm hidden lol\r\n") + ft_strlen("there is no stars in the sky");
 
 	printf("%zu\n", ft_strlcat(buff2, str, max));
 	printf("%s\n", buff2);
@@ -32,30 +72,3 @@
 	}
 	return (dstlen + srclen);
 } */
-
-
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
-{
-	register char *d = dst;
-	register const char *s = src;
-	register size_t n = size;
-	size_t dlen;
-
-	while (n-- != 0 && *d != '\0')
-		d++;
-	dlen = d - dst;
-	n = size - dlen;
-
-	if (n == 0)
-		return(dlen + ft_strlen(s));
-	while (*s != '\0') {
-		if (n != 1) {
-			*d++ = *s;
-			n--;
-		}
-		s++;
-	}
-	*d = '\0';
-
-	return(dlen + (s - src));
-}

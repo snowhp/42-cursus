@@ -38,6 +38,7 @@ SRCS        :=      ft_strchr.c \
                           ft_strdup.c \
                           ft_strnlen.c \
                           ft_strnstr.c \
+                          ft_substr.c \
                           main.c \
                            #ft_strnstr.c
 OBJS        := $(SRCS:.c=.o)

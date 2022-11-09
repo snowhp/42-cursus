@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:58:58 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 19:44:38 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:03:51 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,14 @@
 }*/
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char *dest0 = dst;
-	char const *source0 = src;
+	char		*dest0;
+	char const	*source0;
+
+	dest0 = dst;
+	source0 = src;
 	if (source0 < dest0)
-	{	source0 += len;
+	{
+		source0 += len;
 		dest0 += len;
 		while (len)
 		{
@@ -91,7 +95,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	else if (source0 != dest0)
 	{
-		while(len)
+		while (len)
 		{
 			*dest0++ = *source0++;
 			--len;

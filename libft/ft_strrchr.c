@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:04:30 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 18:05:03 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:05:18 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
+	int		i;
 	char	*save;
 
 	save = (char *)0;
-	int	i;
-
 	i = ft_strlen(s);
-	if(c == '\0')
-		return((char *)s+i);
+	if (c == '\0')
+		return ((char *)s + i);
 	while (*s != '\0')
 	{
 		if (*s == c)

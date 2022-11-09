@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 11:05:59 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 20:04:46 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:15:28 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,36 @@
 
 char	*ft_strnstr(const char *s, const char *find, size_t slen)
 {
-	char c, sc;
-	size_t len;
-	
-	if ((c = *find++) != '\0') {
+	char	c;
+	char	sc;
+	size_t	len;
+
+	c = *find++;
+	if (c != '\0')
+	{
 		len = ft_strlen(find);
-		if ((sc = *s++) == '\0' || slen-- < 1)
-					return (NULL);
+		sc = *s++;
+		if (sc == '\0' || slen-- < 1)
+			return (NULL);
 		if (len > slen)
-				return (NULL);		
+			return (NULL);
 		while (ft_strncmp(s, find, len) != 0)
 		{
-			while (sc != c) 
+			while (sc != c)
 			{
-				if ((sc = *s++) == '\0' || slen-- < 1)
+				sc = *s++;
+				if (sc == '\0' || slen-- < 1)
 					return (NULL);
 			}
 			if (len > slen)
 				return (NULL);
-		} 
+		}
 		s--;
 	}
 	return ((char *)s);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 #include <bsd/string.h>
 
 int	main(void)
@@ -77,3 +82,4 @@ int	main(void)
 		printf("Sucess");
 	return (0);
 }
+ */
