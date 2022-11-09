@@ -1,40 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 14:10:58 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 22:11:53 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/09 20:14:14 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/09 22:12:54 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	char	*src;
 	char	*dst;
+	int		size;
+	int		i;
 
-	src = (char *) s;
-	dst = malloc(ft_strlen(s) + 1 * sizeof(char));
+	i = -1;
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	dst = malloc(size * sizeof(char));
 	if(!dst)
-		return(NULL);
-	ft_strlcpy(dst, src, ft_strlen(s) + 1);
+		return (NULL);
+	while (s1[++i])	
+		dst[i] = s1[i];
+	i = -1;
+	while (s2[++i])
+		dst[i + ft_strlen(s1)] = s2[i];
+	dst[i + ft_strlen(s1)] = '\0'; 
 	return (dst);
 }
-/* #include <string.h>
-#include <stdio.h>
-int	main(void)
+
+/* #include <stdio.h>
+int	main()
 {
-	char *teste;
-	char dup[] = "I malloc so I am.";
-	teste = ft_strdup(dup);
-	printf("%s\n", teste);
-	char *teste1;
-	char dup1[] = "I malloc so I am.";
-	teste1 = strdup(dup1);
-	printf("%s\n", teste1);
+	char *s1;
+	char *s2;
+
+	s1 = "";
+	s2 = "asd";
+	printf("%s", ft_strjoin(s1, s2));
 	return (0);
 } */

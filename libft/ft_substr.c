@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:27:22 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 17:25:09 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/09 22:12:31 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		else
 			size = len;
 		dest = malloc((size + 1) * sizeof(char));
+		if(!dest)
+			return(NULL);
 		i = 0;
 		while(i < size)
 		{
