@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:22:48 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 22:05:38 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:32:06 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,43 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
-	int	e;
-	char *s;
-	int	a;
+	int		i;
+	int		e;
+	char	*s;
+	int		a;
 
 	i = 0;
-	while (s1[i]) 
-      {	
+	while (s1[i])
+	{	
 		a = 0;
-		while(set[a])
+		while (set[a])
 		{
-			if(set[a] == s1[i])
-				break;
+			if (set[a] == s1[i])
+				break ;
 			a++;
 		}
-		if(set[a] != s1[i])
-			break;
+		if (set[a] != s1[i])
+			break ;
 		i++;
 	}
-/* 	if(i == (int)(ft_strlen(s1) - 1))
-		return (NULL); */
-	e = ft_strlen(s1);
-	while (e > 0) 
-      {	
+	e = ft_strlen(s1) - 1;
+	while (e > 0)
+	{	
 		a = 0;
-		while(set[a])
+		while (set[a])
 		{
-			if(set[a] == s1[e])
-				break;
+			if (set[a] == s1[e])
+				break ;
 			a++;
 		}
-		if(set[a] != s1[e])
-			break;
+		if (set[a] != s1[e])
+			break ;
 		e--;
 	}
-	if(i >= e)
+	if (i >= e)
 		return (NULL);
-	s = malloc((e - i + 1) * sizeof(char));
-	ft_strlcpy(s, s1 + i, i - e);
+	s = (char *)malloc((e - i + 2) * sizeof(char));
+	ft_strlcpy(s, s1 + i, e - i + 2);
 	return (s);
 }
 
@@ -61,8 +59,8 @@ int	main()
 {
 	char *s1;
 	char *set;
-	s1 = "OLA";
-	set = "";
+	s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
+	set = "Hello \t  Please\n Trim me !";
 	printf("%s", ft_strtrim(s1,set));
 	return (0);
 } */

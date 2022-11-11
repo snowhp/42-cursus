@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 11:05:59 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 22:21:30 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/11 13:54:03 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_strnstr(const char *s, const char *find, size_t slen)
 	return ((char *)s);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 #include <bsd/string.h>
 
 int	main(void)
@@ -75,10 +75,10 @@ int	main(void)
 	char *s1 = "MZIRIBMZIRIBMZE123";
 	char *s2 = "MZIRIBMZE";
 	size_t max = ft_strlen(s2);
-	//char *i1 = strnstr(s1, s2, max);
+	char *i1 = strnstr(s1, s2, max);
 	printf("%s", ft_strnstr(s1, s2, max));
 
-	/* if (i1 == i2)
-		printf("Sucess"); */
+	if (i1 == i2)
+		printf("Sucess");
 	return (0);
-}
+} */
