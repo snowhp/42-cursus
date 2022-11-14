@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:10:58 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 22:11:53 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:06:16 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strdup(const char *s)
 
 	src = (char *) s;
 	dst = malloc(ft_strlen(s) + 1 * sizeof(char));
-	if(!dst)
-		return(NULL);
+	if (!dst)
+		return (NULL);
 	ft_strlcpy(dst, src, ft_strlen(s) + 1);
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 16:40:15 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 22:15:09 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:37:50 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (bytes / size != nmemb)
 		return (NULL);
 	dst = malloc(bytes);
-	if(!dst)
+	if (!dst)
 		return (NULL);
+	ft_memset((unsigned char *)dst, 0, bytes);
 	return (dst);
 }
 

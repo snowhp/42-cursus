@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:27:22 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 22:12:31 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:02:19 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			size = len;
 		dest = malloc((size + 1) * sizeof(char));
 		if(!dest)
-			return(NULL);
+			return (NULL);
 		i = 0;
 		while(i < size)
 		{
@@ -34,10 +34,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			i++;
 		}
 		dest[i] = '\0';
-		return (dest);
 	}
-	dest = malloc(1 * sizeof(char));
-	dest[0] = '\0';
+	else
+	{
+		dest = malloc(1 * sizeof(char));
+		dest[0] = '\0';
+		if(!dest)
+			return (NULL);
+	}
 	return (dest);
 }
 

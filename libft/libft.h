@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:31:54 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/09 21:24:07 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:01:58 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *str, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
@@ -44,7 +45,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void ft_putnbr_fd(int n, int fd);
 /*	Extras	*/
 size_t	ft_strnlen(const char *s, size_t maxlen);
 
 #endif
+
+/*char	**ft_split(char const *s, char c);*/

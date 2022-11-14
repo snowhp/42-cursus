@@ -6,14 +6,13 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:04:12 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/11 14:20:37 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:03:04 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 #include <ctype.h>
-
 
 int	main(void)
 {
@@ -51,6 +50,6 @@ int	main(void)
 	char dst[] = "ola";
 	char src[] = "123";
 	printf("%zu",ft_strlcat(dst, src, 2)); */
-	printf("OLA");
+	//printf("OLA");
 	return (0);
 }

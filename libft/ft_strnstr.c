@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 11:05:59 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/11 13:54:03 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:08:32 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 	return ((char *)big);
 } */
 
-char	*ft_strnstr(const char *s, const char *find, size_t slen)
+/* char	*ft_strnstr(const char *s, const char *find, size_t slen)
 {
 	char	c;
 	char	sc;
@@ -57,14 +57,41 @@ char	*ft_strnstr(const char *s, const char *find, size_t slen)
 			{
 				sc = *s++;
 				if (sc == '\0' || slen-- < 1)
-					return (NULL);
-			}
-			if (len > slen)
-				return (NULL);
-		}
-		s--;
+					return (NULL);printf("%s", i2);
 	}
 	return ((char *)s);
+} */
+
+char	*ft_strnstr(const char *s, const char *find, size_t slen)
+{
+    size_t		i;
+    int	t;
+    int	a;
+
+	if (*find == '\0' || find == NULL)
+        return ((char *)s);
+	if (slen == 0)
+		return (NULL);
+	if (slen > ft_strlen(s))
+		slen = ft_strlen(s);
+	i = 0;
+	while (i < slen)
+	{
+		a = 0;
+		while (*s++ == find[a] && i < slen)
+		{
+			if (find[++a] == '\0')
+			{    
+				t = ft_strlen(find);
+				while (t-- > 0)
+					s--;
+				return ((char *)s);                
+			}
+			i++;
+		}
+		i++;
+	}
+	return (NULL);
 }
 
 /* #include <stdio.h>
@@ -72,13 +99,14 @@ char	*ft_strnstr(const char *s, const char *find, size_t slen)
 
 int	main(void)
 {
-	char *s1 = "MZIRIBMZIRIBMZE123";
-	char *s2 = "MZIRIBMZE";
-	size_t max = ft_strlen(s2);
+	char *s1 = "oh no not the empty string !";
+	char *s2 = "";
+	size_t max = ft_strlen(s1);
 	char *i1 = strnstr(s1, s2, max);
-	printf("%s", ft_strnstr(s1, s2, max));
-
+	char *i2 = ft_strnstr(s1, s2, max);
+	printf("i1: %s\n", i1);
+	printf("i2: %s\n", i2);
 	if (i1 == i2)
-		printf("Sucess");
+		printf("\nSucess");
 	return (0);
 } */

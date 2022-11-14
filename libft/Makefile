@@ -1,21 +1,5 @@
-#  |  |  ___ \    \  |         |
-#  |  |     ) |  |\/ |   _  |  |  /   _ 
-# ___ __|  __/   |   |  (   |    <    __/ 
-#    _|  _____| _|  _| \__,_| _|\_\ \___|
-#                              by jcluzet
-################################################################################
-#                                     CONFIG                                   #
-################################################################################
 
-NAME        := a.out
-CC        := cc
-FLAGS    := -Wall -Wextra -Werror   
-LIBC = ar rc
-################################################################################
-#                                 PROGRAM'S SRCS                               #
-################################################################################
-
-SRCS        :=      ft_strchr.c \
+SRCS = ft_strchr.c \
                           ft_isdigit.c \
                           ft_strrchr.c \
                           ft_isalpha.c \
@@ -42,49 +26,39 @@ SRCS        :=      ft_strchr.c \
                           ft_substr.c \
                           ft_strjoin.c \
                           ft_strtrim.c  \
+                          ft_putchar_fd.c \
+                          ft_putstr_fd.c \
+                          ft_putendl_fd.c \
+                          ft_putnbr_fd.c \
                           main.c \
-                           #ft_strnstr.c
-OBJS        := $(SRCS:.c=.o)
 
-.c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+BNS_SRCS = test.c\
 
-################################################################################
-#                                  Makefile  objs                              #
-################################################################################
+OBJS = $(SRCS:.c=.o)
+BNS_OBJS = $(BNS_SRCS:%.c=%.o)
 
+NAME = libft.a
+FLAGS = -Wall -Wextra -Werror
+CC = cc
+LIBC = ar rc
+RM = rm -f
 
-CLR_RMV		:= \033[0m
-RED		    := \033[1;31m
-GREEN		:= \033[1;32m
-YELLOW		:= \033[1;33m
-BLUE		:= \033[1;34m
-CYAN 		:= \033[1;36m
-RM		    := rm -f
+all: $(NAME)
 
-${NAME}:	${OBJS}
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
-			@echo "$(GREEN)$(NAME) created[0m ✔️"
+$(NAME): $(OBJS)																	
+	$(LIBC) $(NAME) $(OBJS)
 
-all:		${NAME}
-
-bonus:		all
+bonus: $(BNS_OBJS) $(OBJS)
+	$(LIBC) $(NAME) $(BNS_OBJS) $(OBJS)
 
 clean:
-			@ ${RM} *.o */*.o */*/*.o
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
+	$(RM) $(OBJS) $(BNS_OBJS)
 
-fclean:		clean
-			@ ${RM} ${NAME}
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
-
-re:			fclean all
+fclean: clean
+	$(RM) $(NAME)
 
 so:
-	${CC} -nostartfiles -fPIC $(FLAGS) $(SRCS)
-	${CC} -nostartfiles -shared -o libft.so $(OBJS)
+	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS)
+	$(CC) -nostartfiles -shared -o libft.so $(OBJS)
 
-.PHONY:		all clean fclean re
-
-
+re: fclean all

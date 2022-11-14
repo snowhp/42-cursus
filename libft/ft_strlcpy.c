@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:42:51 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/11 15:12:37 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:58:55 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	main(void)
 {
 	char dest[] = "t";
 	char src[] = "ola";
-	ft_strlcpy(dest, src, 1);
+	ft_strlcpy(dest, src, 0);
 	printf("FT> %s\n", dest);
 	char dest1[] = "t";
-	strlcpy(dest1, src, 1);
+	strlcpy(dest1, src, 0);
 	printf("> %s", dest1);
 	return (0);
 }  */

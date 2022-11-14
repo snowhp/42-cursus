@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:22:48 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/11 15:32:06 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:59:41 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (i >= e)
 		return (NULL);
 	s = (char *)malloc((e - i + 2) * sizeof(char));
+	if(!s)
+		return (NULL);
 	ft_strlcpy(s, s1 + i, e - i + 2);
 	return (s);
 }
