@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:22:48 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 17:59:41 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:54:36 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*s;
 	int		a;
 
+	if (!s1)
+		return (NULL);
 	i = 0;
 	while (s1[i])
 	{	
@@ -34,7 +36,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	}
 	e = ft_strlen(s1) - 1;
-	while (e > 0)
+	while (e > 0 && i < e)
 	{	
 		a = 0;
 		while (set[a])
@@ -47,10 +49,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 			break ;
 		e--;
 	}
-	if (i >= e)
-		return (NULL);
 	s = (char *)malloc((e - i + 2) * sizeof(char));
-	if(!s)
+	if (!s)
 		return (NULL);
 	ft_strlcpy(s, s1 + i, e - i + 2);
 	return (s);
@@ -61,8 +61,8 @@ int	main()
 {
 	char *s1;
 	char *set;
-	s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	set = "Hello \t  Please\n Trim me !";
+	s1 = "  \t \t \n   \n\n\n\t";
+	set = " \n\t";
 	printf("%s", ft_strtrim(s1,set));
 	return (0);
 } */

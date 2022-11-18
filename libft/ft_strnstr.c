@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 11:05:59 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/14 19:08:32 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:58:23 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@
 
 char	*ft_strnstr(const char *s, const char *find, size_t slen)
 {
-    size_t		i;
-    int	t;
-    int	a;
+	size_t	i;
+	int		t;
+	int		a;
 
 	if (*find == '\0' || find == NULL)
-        return ((char *)s);
+		return ((char *)s);
 	if (slen == 0)
 		return (NULL);
 	if (slen > ft_strlen(s))
@@ -81,11 +81,11 @@ char	*ft_strnstr(const char *s, const char *find, size_t slen)
 		while (*s++ == find[a] && i < slen)
 		{
 			if (find[++a] == '\0')
-			{    
+			{
 				t = ft_strlen(find);
 				while (t-- > 0)
 					s--;
-				return ((char *)s);                
+				return ((char *)s);
 			}
 			i++;
 		}

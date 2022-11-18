@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:16:39 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/04 21:40:33 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/18 15:49:33 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/18 16:56:22 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	else
-		return (0);
+	unsigned int	i;
+
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }
 
-/* #include <ctype.h>
+/* static void ft_upup(unsigned int i, char* c)
+{
+	i = 0;
+
+	if (c[i] >= 'a' && c[i] <= 'z')
+		c[i] -= 32;
+}
+
 #include <stdio.h>
 int	main(void)
 {
-	char c = '~';
-	printf("%i\n", isprint(c));
-	printf("%i\n", ft_isprint(c));
-	return (0);		
+	char s1[] = "teste as AAA \0";
+	printf("%s\n", s1);
+	ft_striteri(s1, ft_upup);
+	printf("%s", s1);
+	return (0);
 } */
