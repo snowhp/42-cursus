@@ -36,7 +36,11 @@ SRCS = ft_strchr.c \
                           ft_putnbr_fd.c \
                           main.c \
 
-BNS_SRCS = test.c\
+BNS_SRCS = ft_lstnew.c \
+            ft_lstadd_front.c \
+            ft_lstsize.c \
+            ft_lstlast.c \
+            ft_lstadd_back.c \ 
 
 OBJS = $(SRCS:.c=.o)
 BNS_OBJS = $(BNS_SRCS:%.c=%.o)
@@ -62,7 +66,7 @@ fclean: clean
 	$(RM) $(NAME)
 
 so:
-	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS)
-	$(CC) -nostartfiles -shared -o libft.so $(OBJS)
+	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS) $(BNS_SRCS)
+	$(CC) -nostartfiles -shared -o libft.so $(OBJS) $(BNS_OBJS)
 
 re: fclean all

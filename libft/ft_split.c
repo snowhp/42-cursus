@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:50:28 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/18 18:54:14 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:03:05 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**ft_split(char const *s, char c)
 	astr = malloc(sizeof(char *) * (wordcount + 1));
 	if (!astr)
 		return (NULL);
-	astr[wordcount] = '\0';
+	astr[wordcount] = 0;
 	ft_wdfill(astr, s, c);
 	return (astr);
 }
