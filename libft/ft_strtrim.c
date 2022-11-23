@@ -6,58 +6,13 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:22:48 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/18 18:54:36 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/23 16:16:38 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	int		i;
-	int		e;
-	char	*s;
-	int		a;
-
-	if (!s1)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{	
-		a = 0;
-		while (set[a])
-		{
-			if (set[a] == s1[i])
-				break ;
-			a++;
-		}
-		if (set[a] != s1[i])
-			break ;
-		i++;
-	}
-	e = ft_strlen(s1) - 1;
-	while (e > 0 && i < e)
-	{	
-		a = 0;
-		while (set[a])
-		{
-			if (set[a] == s1[e])
-				break ;
-			a++;
-		}
-		if (set[a] != s1[e])
-			break ;
-		e--;
-	}
-	s = (char *)malloc((e - i + 2) * sizeof(char));
-	if (!s)
-		return (NULL);
-	ft_strlcpy(s, s1 + i, e - i + 2);
-	return (s);
-}
-
-/* Testarrrr
-static int	ft_s1trim(char *s1, char *set)
+static int	ft_s1trim(char const *s1, char const *set)
 {
 	int	i;
 	int	a;
@@ -79,8 +34,10 @@ static int	ft_s1trim(char *s1, char *set)
 	return (i);
 }
 
-static int	ft_s2trim(char *s1, char *set, int e)
+static int	ft_s2trim(char const *s1, char const *set, int e, int i)
 {
+	int	a;
+
 	while (e > 0 && i < e)
 	{	
 		a = 0;
@@ -102,18 +59,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		i;
 	int		e;
 	char	*s;
-	int		a;
 
 	if (!s1)
 		return (NULL);
 	i = ft_s1trim(s1, set);
-	e = ft_s2trim(s1, set, ft_strlen(s1) - 1);
+	e = ft_s2trim(s1, set, ft_strlen(s1) - 1, i);
 	s = (char *)malloc((e - i + 2) * sizeof(char));
 	if (!s)
 		return (NULL);
 	ft_strlcpy(s, s1 + i, e - i + 2);
 	return (s);
-}*/
+}
 
 /* #include <stdio.h>
 int	main()

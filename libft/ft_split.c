@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:50:28 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/21 17:03:05 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/23 17:23:00 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main()
 	s = "\0aa\0bbb";
 	c = '\0' ;
 
-	char **arr = ft_split(s, c);
+	char **arr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i');
 	int i = 0;
 	while (arr[i] != 0)
 	{

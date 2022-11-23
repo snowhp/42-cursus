@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:27:22 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/18 18:30:13 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/23 16:27:28 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,69 +14,27 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		size;
-	int		i;
-	char	*dest;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	if (!s)
+	str = malloc(sizeof(*s) * (len + 1));
+	if (!str || !s)
 		return (NULL);
-	if (start <= ft_strlen(s))
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
-		if (len > (ft_strlen(s) - start) + 1)
-			size = (ft_strlen(s) - start) + 1;
-		else
-			size = len;
-		dest = malloc((size + 1) * sizeof(char));
-		if (!dest)
-			return (NULL);
-		i = 0;
-		while (i < size)
+		if (i >= start && j < len)
 		{
-			dest[i] = s[start + i];
-			i++;
+			str[j] = s[i];
+			j++;
 		}
-		dest[i] = '\0';
+		i++;
 	}
-	else
-	{
-		dest = malloc(1 * sizeof(char));
-		if (!dest)
-			return (NULL);
-		dest[0] = '\0';
-	}
-	return (dest);
+	str[j] = 0;
+	return (str);
 }
-
-/* Testar
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	int		size;
-	int		i;
-	char	*dest;
-
-	if (!s)
-		return (NULL);
-	if (start <= ft_strlen(s))
-	{
-		if (len > (ft_strlen(s) - start) + 1)
-			size = (ft_strlen(s) - start) + 1;
-		else
-			size = len;
-		dest = malloc((size + 1) * sizeof(char));
-		if (!dest)
-			return (NULL);
-		i = -1;
-		while (i++ < size)
-			dest[i] = s[start + i];
-		dest[i] = '\0';
-		return (dest);
-	}
-	dest = malloc(1 * sizeof(char));
-	if (!dest)
-		return (NULL);
-	dest[0] = '\0';
-	return (dest);
-}*/
 
 /* #include <stdio.h>
 int	main()
