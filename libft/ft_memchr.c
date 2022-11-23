@@ -28,6 +28,21 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	return (NULL);
 }
 
+/*TESTAR
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	const char	*big;
+
+	big = (const char *)s;
+	while (n-- > 0)
+	{
+		if (*big++ == c)
+			return ((void *)&big);
+		i++;
+	}
+	return (NULL);
+}*/
+
 /* #include <string.h>
 int	main(void)
 {

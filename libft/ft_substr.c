@@ -47,6 +47,37 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (dest);
 }
 
+/* Testar
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	int		size;
+	int		i;
+	char	*dest;
+
+	if (!s)
+		return (NULL);
+	if (start <= ft_strlen(s))
+	{
+		if (len > (ft_strlen(s) - start) + 1)
+			size = (ft_strlen(s) - start) + 1;
+		else
+			size = len;
+		dest = malloc((size + 1) * sizeof(char));
+		if (!dest)
+			return (NULL);
+		i = -1;
+		while (i++ < size)
+			dest[i] = s[start + i];
+		dest[i] = '\0';
+		return (dest);
+	}
+	dest = malloc(1 * sizeof(char));
+	if (!dest)
+		return (NULL);
+	dest[0] = '\0';
+	return (dest);
+}*/
+
 /* #include <stdio.h>
 int	main()
 {

@@ -56,6 +56,65 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (s);
 }
 
+/* Testarrrr
+static int	ft_s1trim(char *s1, char *set)
+{
+	int	i;
+	int	a;
+
+	i = 0;
+	while (s1[i])
+	{	
+		a = 0;
+		while (set[a])
+		{
+			if (set[a] == s1[i])
+				break ;
+			a++;
+		}
+		if (set[a] != s1[i])
+			break ;
+		i++;
+	}
+	return (i);
+}
+
+static int	ft_s2trim(char *s1, char *set, int e)
+{
+	while (e > 0 && i < e)
+	{	
+		a = 0;
+		while (set[a])
+		{
+			if (set[a] == s1[e])
+				break ;
+			a++;
+		}
+		if (set[a] != s1[e])
+			break ;
+		e--;
+	}
+	return (e);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		e;
+	char	*s;
+	int		a;
+
+	if (!s1)
+		return (NULL);
+	i = ft_s1trim(s1, set);
+	e = ft_s2trim(s1, set, ft_strlen(s1) - 1);
+	s = (char *)malloc((e - i + 2) * sizeof(char));
+	if (!s)
+		return (NULL);
+	ft_strlcpy(s, s1 + i, e - i + 2);
+	return (s);
+}*/
+
 /* #include <stdio.h>
 int	main()
 {
