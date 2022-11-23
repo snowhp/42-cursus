@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 19:04:58 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/23 15:48:07 by tde-sous         ###   ########.fr       */
+/*   Created: 2022/11/23 14:32:49 by tde-sous          #+#    #+#             */
+/*   Updated: 2022/11/23 15:49:02 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*tmp;
 
-	if (lst)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		if (*lst == NULL)
-			*lst = new;
-		else
-		{
-			tmp = ft_lstlast(*(lst));
-			tmp->next = new;
-		}
+		tmp = lst->next;
+		(f)(lst->content);
+		lst = tmp;
 	}
 }
-
-/* #include <string.h>
-#include <stdio.h>
-int	main()
-{
-	t_list *l = ft_lstnew(strdup("nyacat"));
-	t_list *n = ft_lstnew(strdup("OK"));
-
-	ft_lstadd_back(&l, n);
-	if (l->next == n && !strcmp(l->next->content, "OK"))
-	{
-		printf("SUCESS");
-	}
-	else
-		printf("Failed");
-	return (0);
-} */
