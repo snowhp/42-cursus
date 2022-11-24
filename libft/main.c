@@ -47,7 +47,7 @@ int	main(void)
 	printf("\n\t|||||isprint|||||\n0 - Nao corresponde || 1 - Corresponde \n\t---->%i<----\n",isprint(str));
 	printf("-----------------------------------------\n");
 
-	char dst[] = "ola";
+	char dst[] = "oa";
 	char src[] = "123";
 	printf("%zu",ft_strlcat(dst, src, 2)); */
 	//printf("OLA");
