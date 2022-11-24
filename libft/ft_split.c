@@ -6,90 +6,74 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:50:28 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/23 17:23:00 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:27:40 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_wdifill(const char *s, char c)
+static int	ft_wcount(const char *str, char c)
 {
-	int		i;
-	int		l;
-	char	*result;
+	int	i;
+	int	count;
+	int	registc;
 
-	l = 0;
+	count = 0;
+	registc = 1;
 	i = 0;
-	while (s[l] != '\0' && s[l] != c && s[l] != '\t' && s[l] != '\t')
-		++l;
-	result = malloc(sizeof(char) * (l + 1));
-	if (!result)
-		return (NULL);
-	result[l] = '\0';
-	while (i < l)
+	while (str && str[i] != '\0')
 	{
-		result[i] = s[i];
+		if (str[i] != c && registc)
+		{
+			count++;
+			registc = 0;
+		}
+		else if (registc == 0 && str[i] == c)
+			registc = 1;
 		i++;
 	}
-	return (result);
+	return (count);
 }
 
-static void	ft_wdfill(char **astr, const char *s, char c)
+static char	*ft_word(const char *str, char c)
 {
-	int	wi;
-	int	i;
+	int		l;
+	int		i;
+	char	*res;
 
-	wi = 0;
+	l = 0;
+	while (str[l] != '\0' && str[l] != c)
+		l++;
+	res = (char *)malloc(sizeof(char) * (l + 1));
+	if (!res)
+		return (NULL);
+	res[l] = '\0';
 	i = 0;
-	while ((s[i] == c || s[i] == '\t' || s[i] == '\n') && s[i] != '\0')
-		i++;
-	while (s[i])
-	{
-		astr[wi] = ft_wdifill(s + i, c);
-		++wi;
-		while (s[i] != c && s[i] != '\t' && s[i] != '\n')
-			i++;
-		while (s[i] == c || s[i] == '\t' || s[i] == '\n')
-			i++;
-	}	
-}
-
-static int	ft_wdcount(char const *s, char c)
-{
-	int	wc;
-	int	i;
-
-	wc = 0;
-	i = 0;
-	if (s[0] == '\0')
-		return (0);
-	while (s[i] == c || s[i] == '\t' || s[i] == '\n')
-		i++;
-	while (s[i])
-	{
-		++wc;
-		while (s[i] != c && s[i] != '\t' && s[i] != '\n')
-			i++;
-		while (s[i] == c || s[i] == '\t' || s[i] == '\n')
-			i++;
-	}	
-	return (wc);
+	while (i < l)
+		res[i++] = *str++;
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		wordcount;
-	char	**astr;
+	int		wcount;
+	int		i;
+	char	**result;
 
-	if (!s)
+	wcount = ft_wcount(s, c);
+	result = (char **)malloc((wcount + 1) * sizeof(char *));
+	if (!result)
 		return (NULL);
-	wordcount = ft_wdcount(s, c);
-	astr = malloc(sizeof(char *) * (wordcount + 1));
-	if (!astr)
-		return (NULL);
-	astr[wordcount] = 0;
-	ft_wdfill(astr, s, c);
-	return (astr);
+	i = 0;
+	while (i < wcount)
+	{
+		while (*s != '\0' && *s == c)
+			s++;
+		result[i] = ft_word(s, c);
+		s += ft_strlen(result[i++]);
+	}
+	result[i] = NULL;
+	return (result);
 }
 
 /* #include <stdio.h>
@@ -101,7 +85,7 @@ int	main()
 	s = "\0aa\0bbb";
 	c = '\0' ;
 
-	char **arr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i');
+	char **arr = ft_split(s, c);
 	int i = 0;
 	while (arr[i] != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:59:12 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/11/07 16:23:07 by tde-sous         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:09:17 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	register const unsigned char	*p1;
-	register const unsigned char	*p2;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
 
 	if (n != 0)
 	{
