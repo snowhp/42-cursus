@@ -1,0 +1,6 @@
+[submodule "libft/libft-war-machine"]
+	path = libft/libft-war-machine
+	url = https://github.com/0x050f/libft-war-machine
+[submodule "libft/libft-unit-test"]
+	path = libft/libft-unit-test
+	url = https://github.com/alelievr/libft-unit-test
