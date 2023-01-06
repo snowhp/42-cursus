@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:20 by tde-sous          #+#    #+#             */
-/*   Updated: 2022/12/25 21:14:25 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:29:56 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,45 @@ char	*get_str(int fd, char *str)
 	return (str);
 }
 
-char	*get_line(char *backup)
+char	*get_line(char *str)
 {
+	char	*result;
+	// copy symbols before \n and \n
+	// abc\ndef
+	// result = "abc\n";
+	int	i = 0;
 
+	while(str[i] != )
 }
 
-char	get_new_str(void)
+char	*get_new_str(char *str)
 {
+	char	*tmp;
+	char	*new_line;
+	int	count;
 
+	count = 0;
+	tmp = str;
+	while (tmp && *tmp != '\n')
+		count++;
+	// "abc\ndef" ft_strlen() => 7
+	// while => 4
+
+	// count of symbols after \n => 3 "def"
+	count = ft_strlen(str) - count;
+	new_line = malloc(sizeof(char) * (count + 1));
+	// find index of first character after \n (index of 'd' = 4)
+	count = ft_strlen(str) - count;
+	i = 0;
+	while (str[count] != '\0')
+	{
+		new_line[i] = str[count];
+		count++;
+		i++;
+	}
+	free(str);
+	new_line[i] = '\0';
+	return (new_line);
 }
 
 char	*get_next_line(int fd)
@@ -57,16 +88,24 @@ char	*get_next_line(int fd)
 	if (!str)
 		return (NULL);
 	line = get_line(str); //Limpar a linha
-	str = get_new_str(str);//Guardar o resto da linha
+	str = get_new_str(str);//Guardar o resto da linha sssss\nkkkkk
+	// str =  
 	return (line);//Devolver
 }
+
+#include <stdio.h>
 
 int	main(void)
 {
 	int	i;
 	int	fd;
 
-	fd = open("FILE", O_RDONLY);
+	fd = open("fd2.txt", O_RDONLY);
+	if(fd == -1)
+	{
+		printf("ERROR ON FILE");
+		return (0);
+	}
 	i = 0;
 	while (i < 10)
 	{
