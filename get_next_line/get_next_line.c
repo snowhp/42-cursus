@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:20 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/04 15:29:56 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/06 15:41:32 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*get_str(int fd, char *str)
 			free(buf);
 			return (NULL);
 		}
-		buf[read_bytes] = '\0';
+		buf[read_bytes] = '\0'; // colocar /0 no final
 		str = ft_strjoin(str, buf);
 	}
 	free(buf);
@@ -44,7 +44,17 @@ char	*get_line(char *str)
 	// result = "abc\n";
 	int	i = 0;
 
-	while(str[i] != )
+	while(str[i] != '\n' && str[i] != '\0')
+		i++;
+	result = malloc(sizeof(char) * (i + 1));
+	i = 0;
+	while(str[i] != '\n' && str[i] != '\0')
+	{
+		str[i] = result[i];
+		i++;
+	}
+	result[++i] = '\n';
+	return (result);
 }
 
 char	*get_new_str(char *str)
@@ -52,10 +62,11 @@ char	*get_new_str(char *str)
 	char	*tmp;
 	char	*new_line;
 	int	count;
+	int	i;
 
 	count = 0;
 	tmp = str;
-	while (tmp && *tmp != '\n')
+	while (tmp[count] && tmp[count] != '\n')
 		count++;
 	// "abc\ndef" ft_strlen() => 7
 	// while => 4
@@ -89,7 +100,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = get_line(str); //Limpar a linha
 	str = get_new_str(str);//Guardar o resto da linha sssss\nkkkkk
-	// str =  
 	return (line);//Devolver
 }
 
@@ -100,7 +110,7 @@ int	main(void)
 	int	i;
 	int	fd;
 
-	fd = open("fd2.txt", O_RDONLY);
+	fd = open("./fd2.txt", O_RDONLY);
 	if(fd == -1)
 	{
 		printf("ERROR ON FILE");
