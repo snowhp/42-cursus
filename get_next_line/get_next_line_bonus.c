@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:07 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/09 15:40:10 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:01:28 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_str(int fd, char *str)
 			free(buf);
 			return (NULL);
 		}
-		buf[read_bytes] = '\0'; // colocar /0 no final
+		buf[read_bytes] = '\0';
 		tmp = ft_strjoin(str, buf);
 		free(str);
 		str = tmp;
@@ -44,9 +44,8 @@ char	*get_str(int fd, char *str)
 char	*get_line(char *str)
 {
 	char	*result;
-	// copy symbols before \n and \n
-	// abc\ndef
-	// result = "abc\n";
+
+
 	int	i = 0;
 
 	if(!(*(str + i)))
@@ -70,15 +69,10 @@ char	*get_line(char *str)
 
 char	*get_new_str(char *str)
 {
-	//str received = abc/ndef/0
-	// strlen() = 7
-	// index (/n) = 4
-	// def = strlen()[7] - index (/n)[4]
 	int	i;
 	int	count;
 	char *new_str;
 
-	//find /n
 	i = 0;
 	count = 0;
 	while (str[i] != '\n' && str[i] != '\0')
@@ -88,18 +82,13 @@ char	*get_new_str(char *str)
 		free(str);
 		return(NULL);
 	}
-	//find index of next char next to /n and malloc to the end of the str
 	new_str = ft_calloc(sizeof(char), (ft_strlen(str) - i));
 	if(!new_str)
 		return(NULL);
-	//copy new str
-	//null byte at end of new str
 	i++;
 	while ((*(str + i)) != '\0')
 		*(new_str + count++) = *(str + i++);
-	//free str
 	free(str);
-	//return new str
 	return(new_str);
 }
 
@@ -110,12 +99,12 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str[fd] = get_str(fd, str[fd]);// Obter a linha
+	str[fd] = get_str(fd, str[fd]);
 	if (!str[fd])
 		return (NULL);
-	line = get_line(str[fd]); //Limpar a linha 
-	str[fd] = get_new_str(str[fd]);//Guardar o resto da linha sssss\nkkkkk
-	return (line);//Devolver
+	line = get_line(str[fd]);
+	str[fd] = get_new_str(str[fd]);
+	return (line);
 }
 
 /* #include <stdio.h>

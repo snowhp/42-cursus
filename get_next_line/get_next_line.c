@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:20 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/09 17:33:06 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:36:43 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,7 @@ char	*get_new_str(char *str)
 	i++;
 	while ((*(str + i)) != '\0')
 		*(new_str + count++) = *(str + i++);
-	//free str
 	free(str);
-	//return new str
 	return(new_str);
 }
 
@@ -113,9 +111,9 @@ char	*get_next_line(int fd)
 	str = get_str(fd, str);// Obter a linha
 	if (!str)
 		return (NULL);
-	line = get_line(str); //Limpar a linha 
-	str = get_new_str(str);//Guardar o resto da linha sssss\nkkkkk
-	return (line);//Devolver
+	line = get_line(str);
+	str = get_new_str(str);
+	return (line);
 }
 
 #include <stdio.h>
