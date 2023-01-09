@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:17 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/04 14:42:20 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:52:14 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-
 
 char	*ft_strrchr(const char *s, int c)
 {
