@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:20 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/09 17:36:43 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:43:59 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*get_str(int fd, char *str)
 {
 	char		*buf;
-	int		read_bytes;
-	char 		*tmp;
+	char		*tmp;
+	int			read_bytes;
 
 	buf = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
 	if (!buf)
@@ -32,7 +32,7 @@ char	*get_str(int fd, char *str)
 			free(buf);
 			return (NULL);
 		}
-		buf[read_bytes] = '\0'; // colocar /0 no final
+		buf[read_bytes] = '\0';
 		tmp = ft_strjoin(str, buf);
 		free(str);
 		str = tmp;
@@ -44,12 +44,10 @@ char	*get_str(int fd, char *str)
 char	*get_line(char *str)
 {
 	char	*result;
-	// copy symbols before \n and \n
-	// abc\ndef
-	// result = "abc\n";
-	int	i = 0;
+	int		i;
 
-	if(!(*(str + i)))
+	i = 0;
+	if (!(*(str + i)))
 		return (NULL);
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
@@ -70,15 +68,10 @@ char	*get_line(char *str)
 
 char	*get_new_str(char *str)
 {
-	//str received = abc/ndef/0
-	// strlen() = 7
-	// index (/n) = 4
-	// def = strlen()[7] - index (/n)[4]
-	int	i;
-	int	count;
-	char *new_str;
+	char	*new_str;
+	int		i;
+	int		count;
 
-	//find /n
 	i = 0;
 	count = 0;
 	while (str[i] != '\n' && str[i] != '\0')
@@ -86,19 +79,16 @@ char	*get_new_str(char *str)
 	if (!(*(str + i)))
 	{
 		free(str);
-		return(NULL);
+		return (NULL);
 	}
-	//find index of next char next to /n and malloc to the end of the str
 	new_str = ft_calloc(sizeof(char), (ft_strlen(str) - i));
-	if(!new_str)
-		return(NULL);
-	//copy new str
-	//null byte at end of new str
+	if (!new_str)
+		return (NULL);
 	i++;
 	while ((*(str + i)) != '\0')
 		*(new_str + count++) = *(str + i++);
 	free(str);
-	return(new_str);
+	return (new_str);
 }
 
 char	*get_next_line(int fd)
@@ -108,7 +98,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = get_str(fd, str);// Obter a linha
+	str = get_str(fd, str);
 	if (!str)
 		return (NULL);
 	line = get_line(str);
@@ -116,7 +106,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 int	main(void)
 {
@@ -136,4 +126,4 @@ int	main(void)
 		i++;
 	}
 	return (0);
-}
+} */

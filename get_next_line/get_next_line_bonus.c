@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:07 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/09 18:01:28 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:52:55 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*get_str(int fd, char *str)
 {
-	char		*buf;
+	char	*buf;
+	char	*tmp;
 	int		read_bytes;
-	char 		*tmp;
 
 	buf = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
 	if (!buf)
@@ -44,11 +44,10 @@ char	*get_str(int fd, char *str)
 char	*get_line(char *str)
 {
 	char	*result;
+	int		i;
 
-
-	int	i = 0;
-
-	if(!(*(str + i)))
+	i = 0;
+	if (!(*(str + i)))
 		return (NULL);
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
@@ -69,9 +68,9 @@ char	*get_line(char *str)
 
 char	*get_new_str(char *str)
 {
-	int	i;
-	int	count;
-	char *new_str;
+	char	*new_str;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -80,16 +79,16 @@ char	*get_new_str(char *str)
 	if (!(*(str + i)))
 	{
 		free(str);
-		return(NULL);
+		return (NULL);
 	}
 	new_str = ft_calloc(sizeof(char), (ft_strlen(str) - i));
-	if(!new_str)
-		return(NULL);
+	if (!new_str)
+		return (NULL);
 	i++;
 	while ((*(str + i)) != '\0')
 		*(new_str + count++) = *(str + i++);
 	free(str);
-	return(new_str);
+	return (new_str);
 }
 
 char	*get_next_line(int fd)
@@ -97,7 +96,7 @@ char	*get_next_line(int fd)
 	static char		*str[FOPEN_MAX];
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (NULL);
 	str[fd] = get_str(fd, str[fd]);
 	if (!str[fd])
@@ -107,7 +106,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/* #include <stdio.h>
+#include <stdio.h>
 
 int	main(void)
 {
@@ -127,4 +126,4 @@ int	main(void)
 		i++;
 	}
 	return (0);
-} */
+}
