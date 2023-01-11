@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:10:07 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/10 16:52:55 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:48:45 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_str(int fd, char *str)
 			free(buf);
 			return (NULL);
 		}
-		buf[read_bytes] = '\0';
+		*(buf + read_bytes) = '\0';
 		tmp = ft_strjoin(str, buf);
 		free(str);
 		str = tmp;
@@ -110,20 +110,19 @@ char	*get_next_line(int fd)
 
 int	main(void)
 {
-	int	i;
 	int	fd;
-
+	char	*line;
+	
 	fd = open("fd3.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("ERROR ON FILE");
 		return (0);
 	}
-	i = 0;
-	while (i < 1)
+	while ((line = get_next_line(fd)))
 	{
-		printf("%s", get_next_line(fd));
-		i++;
+		printf("%s", line);
+		free(line);
 	}
 	return (0);
 }
